@@ -45,14 +45,8 @@
         .intro.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
         .intro-inner { text-align: center; padding: 20px; }
         .intro-tag {
-            display: inline-block;
             font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
             color: var(--sage-dark); font-weight: 500;
-            padding: 9px 20px;
-            border: 1.5px dashed rgba(126,145,128,.55);
-            border-radius: 2px;
-            background: rgba(255,255,255,.55);
-            transform: rotate(-2deg);
             margin-bottom: 18px;
             animation: introFade 1s .2s both;
         }
@@ -98,9 +92,9 @@
         .env-letter .ml-fl-b { margin: 9px auto 0; }
         .env-letter .ml-names {
             font-family: 'Cormorant Garamond', serif; font-size: 16px;
-            letter-spacing: 2px; color: var(--ink); margin-top: 4px;
+            letter-spacing: 4px; color: var(--ink); margin-top: 4px;
         }
-        .env-letter .ml-date { font-size: 9px; letter-spacing: 4px; color: var(--muted); margin-top: 5px; }
+        .env-letter .ml-date { font-size: 10px; letter-spacing: 4px; color: var(--muted); margin-top: 5px; font-weight: 500; }
         .env-front {
             position: absolute; inset: 0; border-radius: 10px; z-index: 3;
             background:
@@ -157,26 +151,10 @@
             animation: letterOut 1.15s cubic-bezier(.25,.8,.35,1) .45s both;
             box-shadow: 0 24px 60px rgba(71,84,63,.25), 0 8px 24px rgba(0,0,0,.14);
         }
-        .open-btn {
-            margin-top: 36px; padding: 15px 44px;
-            font-family: 'Montserrat', sans-serif; font-size: 11px;
-            letter-spacing: 4px; text-transform: uppercase; font-weight: 500;
-            color: var(--dark); background: transparent;
-            border: 1.5px solid var(--sage-dark); cursor: pointer;
-            transition: all .35s; animation: introFade 1s .8s both;
-            position: relative; overflow: hidden;
-        }
-        .open-btn::after {
-            content: ''; position: absolute; inset: 0; background: var(--dark);
-            transform: scaleX(0); transform-origin: left; transition: transform .35s; z-index: -1;
-        }
-        .open-btn:hover { color: #fff; }
-        .open-btn:hover::after { transform: scaleX(1); }
-        .open-btn:disabled { opacity: .5; cursor: default; }
         .burst-leaf { position: fixed; z-index: 2001; pointer-events: none; border-radius: 60% 0 60% 0; }
         .intro-hint {
-            font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-            color: var(--muted); margin-top: 16px;
+            font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--muted); margin-top: 16px; font-weight: 500;
             animation: introFade 1s 1.4s both;
         }
 
@@ -218,19 +196,19 @@
 
         .heart-div { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 22px 0; }
         .heart-div .ln { width: 64px; height: 1px; background: var(--line); }
-        .heart-div .h { font-size: 11px; color: var(--sage); }
+        .heart-div .h { font-size: 12px; color: var(--sage); animation: beat 2.4s ease-in-out infinite; }
 
         /* ---------- hero date ---------- */
         .hero-date { text-align: center; margin-top: 24px; }
         .hd-month {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 16px; letter-spacing: 6px; text-transform: uppercase;
+            font-size: 16px; letter-spacing: 4px; text-transform: uppercase;
             color: var(--sage-dark); font-weight: 500; margin-bottom: 10px;
         }
         .hd-row { display: flex; align-items: center; justify-content: center; gap: 18px; }
         .hd-side {
             font-family: 'Cormorant Garamond', serif; font-size: 14px;
-            letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink);
+            letter-spacing: 4px; text-transform: uppercase; color: var(--ink);
             border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
             padding: 8px 4px; min-width: 86px; text-align: center;
         }
@@ -240,46 +218,37 @@
         }
 
         .euc-top { display: block; width: 112%; max-width: none; margin: -40px -6% 6px; }
-        /* ---------- photo frames ---------- */
+        /* ---------- photo frames: matte + tint ---------- */
+        .photo-wrap {
+            position: relative;
+            margin: 26px -34px 0;
+            background: #fffdf8;
+            border: 1px solid rgba(126,145,128,.28);
+            padding: 12px;
+            box-shadow: 0 14px 40px rgba(60,70,54,.16);
+            transition: transform .45s ease, box-shadow .45s ease;
+        }
+        .photo-wrap:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 54px rgba(60,70,54,.22);
+        }
         .photo {
             position: relative;
-            margin: 26px -34px;
             aspect-ratio: 2/3;
-            background: transparent;
             border-radius: 4px;
-            padding: 0;
-            box-shadow:
-                0 18px 50px rgba(60,70,54,.22);
-            display: flex; align-items: center; justify-content: center;
-            text-align: center;
             overflow: hidden;
-            transition: transform .5s cubic-bezier(.25,.46,.45,.94), box-shadow .5s;
-        }
-        .photo:hover {
-            transform: translateY(-4px);
-            box-shadow:
-                0 26px 64px rgba(60,70,54,.34),
-                0 6px 18px rgba(60,70,54,.16);
         }
         .photo img.photo-img {
             position: relative; width: 100%; height: 100%;
-            object-fit: cover; z-index: 2;
-            display: block;
+            object-fit: cover; display: block;
+            filter: saturate(.82) sepia(.10) brightness(1.02);
         }
-        /* глубокое мягкое размытие краёв фото */
+        /* финальное фото прижато к нижнему краю панели */
+        .photo-wrap-last { margin-bottom: -44px; border-bottom: none; }
         .photo::after {
-            content: ''; position: absolute; inset: 0; z-index: 3;
-            background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 52%, rgba(246,241,231,.55) 78%, rgba(246,241,231,.92) 96%, #f6f1e7 100%);
+            content: ''; position: absolute; inset: 0; z-index: 2;
+            background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 58%, rgba(255,253,248,.35) 80%, rgba(255,253,248,.75) 100%);
             pointer-events: none;
-        }
-        /* мягкая тень-подложка под фото */
-        .photo-wrap { position: relative; }
-        .photo-wrap::before {
-            content: ''; position: absolute; left: 20px; right: 20px; top: 26px; bottom: 6px;
-            background: rgba(60,70,54,.14);
-            filter: blur(22px);
-            border-radius: 40%;
-            z-index: 0;
         }
 
         /* ---------- left panel ---------- */
@@ -293,6 +262,8 @@
             max-width: 400px; margin: 26px auto 0;
         }
         .names { text-align: center; margin-top: 30px; }
+        .names-hero { margin-top: 18px; }
+        .names-hero .n { font-size: clamp(38px, 9vw, 54px); }
         .names .n-h {
             font-size: .58em; color: var(--sage-dark);
             margin: 0 .18em; vertical-align: middle;
@@ -330,12 +301,13 @@
             pointer-events: none;
         }
         .wash-title {
-            text-align: center; font-size: 11px; letter-spacing: 5px;
+            text-align: center; font-size: 10px; letter-spacing: 4px;
             text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
+            font-weight: 500;
         }
         .wash-sub {
             text-align: center; font-family: 'Great Vibes', cursive;
-            font-size: 27px; color: var(--sage-dark); margin-bottom: 26px;
+            font-size: clamp(28px, 7vw, 36px); color: var(--sage-dark); margin-bottom: 26px;
         }
         .trow {
             display: grid; grid-template-columns: 56px 30px 1fr;
@@ -390,11 +362,11 @@
             line-height: 1.15; letter-spacing: .5px;
         }
         .ttxt .tn {
-            font-size: 12.5px; font-weight: 500; letter-spacing: 1.5px;
+            font-size: 10px; font-weight: 500; letter-spacing: 4px;
             text-transform: uppercase; color: var(--ink);
             margin: 3px 0 2px;
         }
-        .ttxt .td { font-size: 12.5px; font-weight: 300; line-height: 1.65; color: var(--muted); }
+        .ttxt .td { font-size: 13px; font-weight: 300; line-height: 1.65; color: var(--muted); }
 
         /* ---------- dress code ---------- */
         .dress {
@@ -412,8 +384,8 @@
             pointer-events: none;
         }
         .dress-title {
-            font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
-            font-weight: 600; color: var(--ink);
+            font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+            font-weight: 500; color: var(--ink);
         }
         .dress-script {
             font-family: 'Great Vibes', cursive;
@@ -421,12 +393,12 @@
             color: var(--sage-dark); margin: 6px 0 10px; line-height: 1.2;
         }
         .dress-text {
-            font-size: 12.5px; font-weight: 300; line-height: 1.85;
+            font-size: 13px; font-weight: 300; line-height: 1.85;
             color: var(--muted); max-width: 340px; margin: 0 auto;
         }
         .dress-note {
             font-family: 'Cormorant Garamond', serif; font-style: italic;
-            font-size: 14.5px; line-height: 1.7; color: var(--ink);
+            font-size: 15px; line-height: 1.7; color: var(--ink);
             max-width: 320px; margin: 14px auto 0;
             border-top: 1px solid rgba(60,70,54,.14);
             padding-top: 14px;
@@ -453,7 +425,7 @@
             line-height: 1.25; color: var(--sage-dark);
         }
         .closing-sub {
-            font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+            font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
             color: var(--ink); margin-top: 8px; font-weight: 500;
         }
         .fin-orn { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px auto 22px; }
@@ -482,8 +454,8 @@
             color: var(--sage-dark); font-variant-numeric: tabular-nums;
         }
         .cd-circle .lbl {
-            font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
-            color: var(--muted); margin-top: 4px;
+            font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--muted); margin-top: 4px; font-weight: 500;
         }
 
         .credit {
@@ -500,10 +472,10 @@
             margin: 12px 0;
         }
         .credit .c-orn .ln { width: 44px; height: 1px; background: rgba(246,241,231,.3); }
-        .credit .c-orn .h { font-size: 10px; color: rgba(246,241,231,.75); }
+        .credit .c-orn .h { font-size: 12px; color: rgba(246,241,231,.75); animation: beat 2.4s ease-in-out infinite; }
         .credit .c-date {
-            font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase;
-            color: rgba(246,241,231,.6);
+            font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+            color: rgba(246,241,231,.6); font-weight: 500;
         }
 
         .to-top {
@@ -521,18 +493,19 @@
         @media (max-width: 400px) {
             .page { padding: 18px 8px 6px; }
             .panel { padding: 30px 20px 34px; }
-            .photo, .wash, .dress, .finale { margin-left: -20px; margin-right: -20px; }
+            .photo-wrap, .wash, .dress, .finale { margin-left: -20px; margin-right: -20px; }
+            .photo-wrap-last { margin-bottom: -34px; }
             .dress { padding: 28px 22px 26px; }
             .finale { padding: 28px 18px 32px; }
             .cd-circle { width: 68px; height: 68px; }
             .cd-circle .num { font-size: 23px; }
             .cd-circles { gap: 8px; }
-            .mono { font-size: 68px; }
-            .names .n { font-size: 54px; }
+            .names-hero { margin-top: 14px; }
+            .names-hero .n { font-size: 40px; }
             .hd-row { gap: 10px; }
             .hd-big { font-size: 52px; }
             .hd-side { min-width: 70px; font-size: 12px; padding: 6px 2px; }
-            .hd-month { font-size: 14px; letter-spacing: 5px; }
+            .hd-month { font-size: 14px; letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -575,7 +548,6 @@
             </div>
         </div>
         <div class="intro-hint">Нажмите на конверт</div>
-        <button class="open-btn" id="openBtn">Открыть приглашение</button>
     </div>
 </div>
 
@@ -586,7 +558,7 @@
         <section class="panel panel-flowers">
 
 
-            <div class="names reveal reveal-d1" style="margin-top:18px"><span class="n" style="font-size:clamp(38px,9vw,54px)">Денис&nbsp;<span class="n-h">♥</span>&nbsp;Оксана</span></div>
+            <div class="names names-hero reveal reveal-d1"><span class="n">Денис&nbsp;<span class="n-h">♥&#xFE0E;</span>&nbsp;Оксана</span></div>
             <div class="mono-sub reveal reveal-d1">Наша свадьба</div>
 
             <div class="hero-date reveal reveal-d2">
@@ -598,7 +570,7 @@
                 </div>
             </div>
 
-            <div class="heart-div reveal reveal-d2"><span class="ln"></span><span class="h">♥</span><span class="ln"></span></div>
+            <div class="heart-div reveal reveal-d2"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
 
             <!-- Наше фото: файл photo.jpg должен лежать рядом с index.html -->
             <div class="photo-wrap reveal reveal-d2">
@@ -609,7 +581,7 @@
 
             <p class="invite reveal">В нашей жизни случится самое счастливое событие — мы станем семьёй! Будем счастливы разделить этот день с самыми близкими и дорогими людьми</p>
 
-            <div class="heart-div reveal"><span class="ln"></span><span class="h">♥</span><span class="ln"></span></div>
+            <div class="heart-div reveal"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
         </section>
 
         <!-- ================= RIGHT PANEL ================= -->
@@ -618,7 +590,7 @@
 
             <div class="wash">
                 <div class="wash-title reveal">Программа дня</div>
-                <div class="wash-sub reveal">как пройдёт праздник</div>
+                <div class="wash-sub reveal">Как пройдёт праздник:</div>
                 <div class="trow reveal">
                     <div class="tico"><svg viewBox="0 0 24 24"><path d="M4 10h16l-8 8zM12 18v3M9 21h6M15 10l3-6"/></svg></div>
                     <div class="tline"><span class="dot"></span></div>
@@ -656,7 +628,7 @@
             <div class="finale reveal reveal-d2">
                 <div class="closing">С нетерпением ждём встречи с вами</div>
                 <div class="closing-sub">и обещаем незабываемый праздник</div>
-                <div class="fin-orn"><span class="ln"></span><span class="h">♥</span><span class="ln"></span></div>
+                <div class="fin-orn"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
                 <div class="cd-caption">До нашей свадьбы осталось</div>
                 <div class="cd-circles">
                     <div class="cd-circle"><span class="num" id="cd-days">0</span><span class="lbl">дней</span></div>
@@ -667,8 +639,8 @@
             </div>
 
             <!-- Наше фото 2: файл photo2.jpg должен лежать рядом с index.html -->
-            <div class="photo-wrap reveal reveal-d2" style="margin-top:26px">
-                <div class="photo" style="margin-bottom:0">
+            <div class="photo-wrap photo-wrap-last reveal reveal-d2" style="margin-top:26px">
+                <div class="photo">
                     <img class="photo-img" src="photo2.jpg" alt="Денис и Оксана">
                 </div>
             </div>
@@ -678,7 +650,7 @@
 
     <div class="credit">
         <div class="c-names">Денис &amp; Оксана</div>
-        <div class="c-orn"><span class="ln"></span><span class="h">♥</span><span class="ln"></span></div>
+        <div class="c-orn"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
         <div class="c-date">30 · 10 · 2026 · Зеленоград</div>
     </div>
 </div>
@@ -690,11 +662,8 @@
 (function() {
     var intro = document.getElementById('intro');
     var env = document.getElementById('envelope');
-    var btn = document.getElementById('openBtn');
     function openInvite() {
         if (env.classList.contains('opening')) { return; }
-        btn.disabled = true;
-        btn.textContent = 'Открываем...';
         env.classList.add('opening');
         var r = env.getBoundingClientRect();
         setTimeout(function() { burst(r.left + r.width / 2, r.top + r.height / 2); }, 800);
@@ -705,7 +674,6 @@
             setTimeout(function() { document.body.classList.add('ready'); }, 550);
         }, 2000);
     }
-    btn.addEventListener('click', openInvite);
     env.addEventListener('click', openInvite);
     function burst(x, y) {
         var colors = ['#7e9180', '#a9bfa4', '#5c6f5a', '#f6f1e7', '#bccbb4'];
