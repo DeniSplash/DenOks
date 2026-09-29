@@ -90,11 +90,7 @@
         .env-letter .ml-mono { font-family: 'Great Vibes', cursive; font-size: 24px; color: var(--sage-dark); padding: 0 8px; }
         .env-letter .ml-fl { width: 118px; height: 17px; margin: 0 auto 9px; display: block; }
         .env-letter .ml-fl-b { margin: 9px auto 0; }
-        .env-letter .ml-names {
-            font-family: 'Cormorant Garamond', serif; font-size: 16px;
-            letter-spacing: 4px; color: var(--ink); margin-top: 4px;
-        }
-        .env-letter .ml-date { font-size: 10px; letter-spacing: 4px; color: var(--muted); margin-top: 5px; font-weight: 500; }
+        .env-letter .ml-date { font-size: 10px; letter-spacing: 4px; color: var(--muted); margin-top: 8px; font-weight: 500; }
         .env-front {
             position: absolute; inset: 0; border-radius: 10px; z-index: 3;
             background:
@@ -169,16 +165,16 @@
             box-shadow: 0 14px 44px rgba(0,0,0,.25);
             overflow: hidden;
         }
-        /* Файл flowers.png должен лежать рядом с index.html.
-           Картинка квадратная, цветы occupy верхние ~38% — обрезаем низ,
-           чтобы ветви обрамляли верх карточки, а не уходили в контент. */
-        .panel-flowers {
-            background-image: url(flowers.png);
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: 100% auto;
-            padding-top: 158px;
+        /* Шапка без рамки: только текст по центру */
+        .wreath {
+            width: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center;
+            padding: 26px 0 10px;
         }
+        .wreath .names { margin-top: 0; }
+        .wreath .mono-sub { margin-top: 14px; }
+        .wreath .hero-date { margin-top: 20px; }
 
         /* ---------- reveal ---------- */
         .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
@@ -262,8 +258,8 @@
             max-width: 400px; margin: 26px auto 0;
         }
         .names { text-align: center; margin-top: 30px; }
-        .names-hero { margin-top: 18px; }
-        .names-hero .n { font-size: clamp(38px, 9vw, 54px); }
+        .names-hero { margin-top: 0; }
+        .names-hero .n { font-size: clamp(30px, 8vw, 44px); }
         .names .n-h {
             font-size: .58em; color: var(--sage-dark);
             margin: 0 .18em; vertical-align: middle;
@@ -437,10 +433,13 @@
             color: var(--ink); font-weight: 500; margin-bottom: 18px;
         }
         .cd-circles {
-            display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+            max-width: 400px; margin: 0 auto;
         }
         .cd-circle {
-            width: 78px; height: 78px; border-radius: 50%;
+            width: 100%; max-width: 82px; aspect-ratio: 1/1;
+            margin: 0 auto;
+            border-radius: 50%;
             border: 1.5px solid rgba(60,70,54,.28);
             background: rgba(255,255,255,.65);
             box-shadow: 0 4px 14px rgba(60,70,54,.10), inset 0 0 0 4px rgba(255,255,255,.35);
@@ -496,16 +495,18 @@
             .photo-wrap, .wash, .dress, .finale { margin-left: -20px; margin-right: -20px; }
             .photo-wrap-last { margin-bottom: -34px; }
             .dress { padding: 28px 22px 26px; }
-            .finale { padding: 28px 18px 32px; }
-            .cd-circle { width: 68px; height: 68px; }
-            .cd-circle .num { font-size: 23px; }
-            .cd-circles { gap: 8px; }
-            .names-hero { margin-top: 14px; }
-            .names-hero .n { font-size: 40px; }
-            .hd-row { gap: 10px; }
-            .hd-big { font-size: 52px; }
-            .hd-side { min-width: 70px; font-size: 12px; padding: 6px 2px; }
-            .hd-month { font-size: 14px; letter-spacing: 4px; }
+            .finale { padding: 26px 12px 32px; }
+            .cd-circles { gap: 6px; }
+            .cd-circle .num { font-size: 21px; }
+            .cd-circle .lbl { font-size: 9px; letter-spacing: 1.5px; margin-top: 3px; }
+            .names-hero .n { font-size: 26px; }
+            .wreath { padding: 2%; }
+            .wreath .mono-sub { margin-top: 8px; }
+            .wreath .hero-date { margin-top: 12px; }
+            .hd-row { gap: 8px; }
+            .hd-big { font-size: 38px; }
+            .hd-side { min-width: 58px; font-size: 10px; padding: 5px 2px; letter-spacing: 2px; }
+            .hd-month { font-size: 12px; letter-spacing: 3px; }
         }
     </style>
 </head>
@@ -515,7 +516,7 @@
 <div class="intro" id="intro">
     <div class="intro-inner">
         <div class="intro-tag">Вам доставлено</div>
-        <div class="intro-title">Приглашение на свадьбу</div>
+        <div class="intro-title">Письмо</div>
         <div class="env-scene">
             <div class="envelope" id="envelope">
                 <div class="env-back"></div>
@@ -530,7 +531,6 @@
                         <circle cx="150" cy="11" r="1.4" fill="#7e9180"/>
                     </svg>
                     <div class="ml-mono">Приглашение на свадьбу</div>
-                    <div class="ml-names">ДЕНИС &nbsp;·&nbsp; ОКСАНА</div>
                     <div class="ml-date">30 · 10 · 2026</div>
                     <svg class="ml-fl ml-fl-b" viewBox="0 0 160 22" fill="none" aria-hidden="true">
                         <path d="M10 11 C 26 11, 34 4, 48 4 C 62 4, 62 11, 74 11" stroke="#7e9180" stroke-width="1.2"/>
@@ -555,12 +555,13 @@
     <div class="panels">
 
         <!-- ================= LEFT PANEL ================= -->
-        <section class="panel panel-flowers">
+                <section class="panel">
+
+            <div class="wreath reveal">
+
 
 
             <div class="names names-hero reveal reveal-d1"><span class="n">Денис&nbsp;<span class="n-h">♥&#xFE0E;</span>&nbsp;Оксана</span></div>
-            <div class="mono-sub reveal reveal-d1">Наша свадьба</div>
-
             <div class="hero-date reveal reveal-d2">
                 <div class="hd-month">Октябрь</div>
                 <div class="hd-row">
@@ -569,6 +570,7 @@
                     <span class="hd-side">2026</span>
                 </div>
             </div>
+            </div><!-- /wreath -->
 
             <div class="heart-div reveal reveal-d2"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
 
