@@ -24,7 +24,8 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--outer);
+            background: var(--outer) url(fon.jpg) repeat;
+            background-size: 185px 185px;
             color: var(--ink);
             -webkit-font-smoothing: antialiased;
         }
@@ -216,37 +217,34 @@
         }
 
         .euc-top { display: block; width: 112%; max-width: none; margin: -40px -6% 6px; }
-        /* ---------- photo frames: matte + tint ---------- */
+        /* ---------- photo medallions ---------- */
         .photo-wrap {
             position: relative;
-            margin: 26px -34px 0;
-            background: #fffdf8;
-            border: 1px solid rgba(126,145,128,.28);
-            padding: 12px;
-            box-shadow: 0 14px 40px rgba(60,70,54,.16);
-            transition: transform .45s ease, box-shadow .45s ease;
-        }
-        .photo-wrap:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 54px rgba(60,70,54,.22);
+            margin: 26px auto 0;
+            width: min(300px, 78%);
         }
         .photo {
             position: relative;
-            aspect-ratio: 2/3;
-            border-radius: 4px;
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
             overflow: hidden;
+            box-shadow:
+                0 0 0 8px #fffdf8,
+                0 0 0 9px rgba(126,145,128,.35),
+                0 16px 40px rgba(60,70,54,.18);
+            transition: transform .45s ease, box-shadow .45s ease;
+        }
+        .photo:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 0 0 8px #fffdf8,
+                0 0 0 9px rgba(126,145,128,.35),
+                0 22px 50px rgba(60,70,54,.24);
         }
         .photo img.photo-img {
             position: relative; width: 100%; height: 100%;
             object-fit: cover; display: block;
-            filter: saturate(.82) sepia(.10) brightness(1.02);
-        }
-        /* финальное фото прижато к нижнему краю панели */
-        .photo-wrap-last { margin-bottom: -44px; border-bottom: none; }
-        .photo::after {
-            content: ''; position: absolute; inset: 0; z-index: 2;
-            background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 58%, rgba(255,253,248,.35) 80%, rgba(255,253,248,.75) 100%);
-            pointer-events: none;
         }
 
         /* ---------- left panel ---------- */
@@ -395,8 +393,8 @@
             color: var(--muted); max-width: 340px; margin: 0 auto;
         }
         .dress-note {
-            font-family: 'Cormorant Garamond', serif; font-style: italic;
-            font-size: 15px; line-height: 1.7; color: var(--ink);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px; font-weight: 300; line-height: 1.85; color: var(--ink);
             max-width: 320px; margin: 14px auto 0;
             border-top: 1px solid rgba(60,70,54,.14);
             padding-top: 14px;
@@ -494,8 +492,7 @@
         @media (max-width: 400px) {
             .page { padding: 18px 8px 6px; }
             .panel { padding: 30px 20px 34px; }
-            .photo-wrap, .wash, .dress, .finale { margin-left: -20px; margin-right: -20px; }
-            .photo-wrap-last { margin-bottom: -34px; }
+            .wash, .dress, .finale { margin-left: -20px; margin-right: -20px; }
             .dress { padding: 28px 22px 26px; }
             .finale { padding: 26px 12px 32px; }
             .cd-circles { gap: 6px; }
@@ -574,8 +571,6 @@
             </div>
             </div><!-- /wreath -->
 
-            <div class="heart-div reveal reveal-d2"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
-
             <!-- Наше фото: файл photo.jpg должен лежать рядом с index.html -->
             <div class="photo-wrap reveal reveal-d2">
                 <div class="photo">
@@ -583,7 +578,7 @@
                 </div>
             </div>
 
-            <p class="invite reveal">В нашей жизни случится самое счастливое событие — мы станем семьёй! Будем счастливы разделить этот день с самыми близкими и дорогими людьми</p>
+            <p class="invite reveal">В нашей жизни случится самое счастливое событие — мы станем семьёй! Будем рады разделить этот день с самыми близкими и дорогими людьми</p>
 
             <div class="heart-div reveal"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
         </section>
@@ -598,12 +593,12 @@
                 <div class="trow reveal">
                     <div class="tico"><svg viewBox="0 0 24 24"><path d="M4 10h16l-8 8zM12 18v3M9 21h6M15 10l3-6"/></svg></div>
                     <div class="tline"><span class="dot"></span></div>
-                    <div class="ttxt"><b>12:00</b><div class="tn">Сбор гостей</div><div class="td">Приветственный фуршет и фотографии в саду</div></div>
+                    <div class="ttxt"><b>12:00</b><div class="tn">Сбор гостей</div><div class="td">Приветственный фуршет и фотографии</div></div>
                 </div>
                 <div class="trow reveal reveal-d1">
                     <div class="tico"><svg viewBox="0 0 24 24"><path d="M12 3v3M10.5 4.5h3M5 10.5L12 5l7 5.5M6.5 9.5V20h11V9.5M10 20v-4.5h4V20"/></svg></div>
                     <div class="tline"><span class="dot"></span></div>
-                    <div class="ttxt"><b>13:00</b><div class="tn">Церемония</div><div class="td">Выездная регистрация — самое торжественное событие дня</div></div>
+                    <div class="ttxt"><b>13:00</b><div class="tn">Церемония</div><div class="td">Регистрация — самое торжественное событие дня пройдет в Зеленоградском Дворце бракосочетания по адресу Москва, Зеленоград, к240</div></div>
                 </div>
                 <div class="trow reveal reveal-d1">
                     <div class="tico"><svg viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12.5" rx="2"/><circle cx="12" cy="13.5" r="3.4"/><path d="M9 7.5L10.5 5h5L17 7.5"/></svg></div>
@@ -631,7 +626,6 @@
 
             <div class="finale reveal reveal-d2">
                 <div class="closing">С нетерпением ждём встречи с вами</div>
-                <div class="closing-sub">и обещаем незабываемый праздник</div>
                 <div class="fin-orn"><span class="ln"></span><span class="h">♥&#xFE0E;</span><span class="ln"></span></div>
                 <div class="cd-caption">До нашей свадьбы осталось</div>
                 <div class="cd-circles">
@@ -643,7 +637,7 @@
             </div>
 
             <!-- Наше фото 2: файл photo2.jpg должен лежать рядом с index.html -->
-            <div class="photo-wrap photo-wrap-last reveal reveal-d2" style="margin-top:26px">
+            <div class="photo-wrap reveal reveal-d2" style="margin-top:26px">
                 <div class="photo">
                     <img class="photo-img" src="photo2.jpg" alt="Денис и Оксана">
                 </div>
