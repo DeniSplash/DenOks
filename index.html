@@ -165,15 +165,13 @@
             box-shadow: 0 14px 44px rgba(0,0,0,.25);
             overflow: hidden;
         }
-        /* flowers.png: от верхнего края панели, на всю ширину */
+        /* flowers.png: от верхнего края, на всю ширину; текст ниже картинки, на цветок не заходит */
         .wreath {
             margin: -40px -34px 0;
-            aspect-ratio: 1000 / 852;
             background: url(flowers.png) no-repeat top center;
-            background-size: 100% 100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background-size: 100% auto;
+            padding: 85.2% 4% 8px;
             text-align: center;
-            padding: 4%;
         }
         .wreath .names { margin-top: 0; }
         .wreath .mono-sub { margin-top: 14px; }
@@ -503,7 +501,7 @@
             .cd-circle .num { font-size: 21px; }
             .cd-circle .lbl { font-size: 9px; letter-spacing: 1.5px; margin-top: 3px; }
             .names-hero .n { font-size: 26px; }
-            .wreath { margin: -30px -20px 0; padding: 2%; }
+            .wreath { margin: -30px -20px 0; padding-left: 2%; padding-right: 2%; }
             .wreath .mono-sub { margin-top: 8px; }
             .wreath .hero-date { margin-top: 12px; }
             .hd-row { gap: 8px; }
