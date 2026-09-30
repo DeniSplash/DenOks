@@ -27,7 +27,15 @@
             background: var(--outer) url(fon.jpg) repeat;
             background-size: 185px 185px;
             color: var(--ink);
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+        /* бумажное зерно поверх всей страницы */
+        body::after {
+            content: ''; position: fixed; inset: 0; z-index: 5000;
+            pointer-events: none;
+            opacity: .045;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
         }
         body.locked { overflow: hidden; }
 
@@ -159,12 +167,13 @@
         .panels { display: flex; flex-direction: column; gap: 26px; align-items: stretch; }
         /* ---------- watercolor olive branches (flowers.png, 2499x2499, transparent) ---------- */
         .panel {
-            background: var(--paper);
             width: 100%;
             padding: 40px 34px 44px;
             position: relative;
-            box-shadow: 0 14px 44px rgba(0,0,0,.25);
             overflow: hidden;
+            background:
+                radial-gradient(ellipse 120% 90% at 50% 8%, #fffdf8 0%, var(--paper) 55%, #f0e9da 100%);
+            box-shadow: 0 14px 44px rgba(0,0,0,.25);
         }
         /* flowers.png: от верхнего края, на всю ширину; цветок заканчивается на 56% ширины,
            текст начинаем сразу под ним, лишняя белая полоса картинки обрезается */
@@ -259,7 +268,7 @@
         }
         .names { text-align: center; margin-top: 30px; }
         .names-hero { margin-top: 0; }
-        .names-hero .n { font-size: clamp(30px, 8vw, 44px); }
+        .names-hero .n { font-size: clamp(26px, 8vw, 44px); white-space: nowrap; }
         .names .n-h {
             font-size: .58em; color: var(--sage-dark);
             margin: 0 .18em; vertical-align: middle;
